@@ -1,4 +1,3 @@
-import { videos } from "../db"
 import routes from "../routes"
 
 //render함수의 첫번째 인자는 템플릿이고 두 번째 인자는 정보가 담긴 객체
