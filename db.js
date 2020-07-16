@@ -4,7 +4,10 @@ import dotenv from "dotenv"
 dotenv.config()
 
 mongoose.connect(
-    process.env.MONGO_URL,
+    //
+    "mongodb://localhost:27017/we-tube",
+    // process.env.MONGO_URL,
+
     {
         useNewUrlParser: true,
         useFindAndModify: false,
