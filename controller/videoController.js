@@ -1,8 +1,16 @@
 import routes from "../routes"
+import Video from "../models/Video"
 
 //render함수의 첫번째 인자는 템플릿이고 두 번째 인자는 정보가 담긴 객체
-export const home = (req, res) => {
-    res.render("home", { pageTitle: "Home", videos })
+export const home = async (req, res) => {
+    try {
+        const videos = await Video.find({});
+        res.render("home", { pageTitle: "Home", videos })
+    } catch (error) {
+        console.log(error)
+        res.render("home", { pageTitle: "Home", videos: [] })
+
+    }
 };
 export const search = (req, res) => {
     const { query: { term: searchingBy } } = req; // const searchingBy = req.query.term;과 동일
