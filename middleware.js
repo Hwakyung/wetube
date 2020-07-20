@@ -3,7 +3,7 @@ import multer from "multer"
 import routes from "./routes"
 
 
-export const multerVideo = multer({ dest: "video/" })
+export const multerVideo = multer({ dest: "uploads/videos/" })
 //전역적으로 사용할 수 있게 변수를 추가해줌
 export const localsMiddleware = (req, res, next) => {
     res.locals.siteName = "WeTube"
