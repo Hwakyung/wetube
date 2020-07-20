@@ -1,0 +1,10 @@
+extend layouts/main
+
+block content 
+    .video__player
+        video(src=`/${video.fileUrl}`)
+    .vidoe__info
+        a(href=routes.editVideo)
+        h5.video__title=video.title
+        span.vidoe__views=video.views
+        p.video__description=video.description
