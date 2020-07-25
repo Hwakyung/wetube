@@ -11,12 +11,22 @@ export const home = async (req, res) => {
     res.render("home", { pageTitle: "Home", videos: [] });
   }
 };
-export const search = (req, res) => {
+
+export const search = async (req, res) => {
   const {
     query: { term: searchingBy },
   } = req; // const searchingBy = req.query.term;과 동일
-  res.render("search", { pageTitle: "Search", searchingBy });
+  let videos = [];
+  try {
+    videos = await Video.find({
+      title: { $regex: searchingBy, $options: "i" },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
+
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
 export const postUpload = async (req, res) => {
